@@ -4,14 +4,32 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+import Models.Ingredient;
+import Models.Recipe;
+import Models.ShortRecipe;
 import app.leftovers.hackathon.sparc.com.leftovers.R;
 
 public class SearchResultsActivity extends Activity {
+
+    private ListView resultsListView;
+    ArrayAdapter<String> resultsAdapter;
+    private ArrayList<ShortRecipe> list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
+
+        resultsListView = (ListView) findViewById(R.id.search_results_list);
+
+
+        // add ingredients adapter
     }
 
 
