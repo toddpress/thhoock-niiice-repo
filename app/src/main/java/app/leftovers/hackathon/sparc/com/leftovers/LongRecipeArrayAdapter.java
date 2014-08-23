@@ -2,7 +2,6 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,14 @@ import com.loopj.android.image.SmartImageView;
 
 import java.util.ArrayList;
 
-import Models.ShortRecipe;
+import Models.LongRecipe;
 
-public class RecipesArrayAdapter extends ArrayAdapter<ShortRecipe> {
+public class LongRecipeArrayAdapter extends ArrayAdapter<LongRecipe> {
     Context context;
     int layoutResourceId;
-    ArrayList<ShortRecipe> data = new ArrayList<ShortRecipe>();
+    ArrayList<LongRecipe> data = new ArrayList<LongRecipe>();
 
-    public RecipesArrayAdapter(Context context, int layoutResourceId, ArrayList<ShortRecipe> data) {
+    public LongRecipeArrayAdapter(Context context, int layoutResourceId, ArrayList<LongRecipe> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -30,40 +29,28 @@ public class RecipesArrayAdapter extends ArrayAdapter<ShortRecipe> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        RecipesHolder holder = null;
+        LongRecipeHolder holder = null;
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
-            holder = new RecipesHolder();
+            holder = new LongRecipeHolder();
             holder.title = (TextView) row.findViewById(R.id.searchRecipeTitle);
             holder.image = (SmartImageView) row.findViewById(R.id.searchRecipeImage);
             row.setTag(holder);
         } else {
-            holder = (RecipesHolder) row.getTag();
+            holder = (LongRecipeHolder) row.getTag();
         }
-
-        final RecipesHolder finalHolder = holder;
-        ShortRecipe recipe = data.get(position);
-        finalHolder.title.setText(recipe.getTitle());
-        finalHolder.image.setImageUrl(recipe.getImage_url());
-        finalHolder.recipeId = recipe.getRecipe_id();
-        row.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), FullRecipeActivity.class);
-                intent.putExtra("fullRecipeId", finalHolder.recipeId);
-                context.startActivity(intent);
-            }
-        });
+        LongRecipe recipe = data.get(position);
+        holder.title.setText(recipe.getTitle());
+        holder.image.setImageUrl(recipe.getImage_url());
 
         return row;
 
     }
 
-    static class RecipesHolder {
+    static class LongRecipeHolder {
         TextView title;
         SmartImageView image;
-        String recipeId;
     }
 }

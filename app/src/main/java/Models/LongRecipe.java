@@ -1,6 +1,6 @@
 package Models;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
 
 /**
  * Created by michaelshavens on 8/23/14.
@@ -12,28 +12,28 @@ public class LongRecipe
     private String url;
     private String image_url;
     private String recipe_id;
-    private ArrayList<String> ingredients;
+    private JSONArray ingredients;
 
     // Getters
     public String getTitle() {
         return this.title;
     }
     public String getUrl() {
-        return this.title;
+        return this.url;
     }
     public String getImage_url() {return this.image_url;}
     public String getRecipe_id() {return this.recipe_id;}
-    public ArrayList<String> getIngredients() {return this.ingredients;}
+    public JSONArray getIngredients() {return this.ingredients;}
 
     // Setters
-    public void setTitle(String ingredient) {
-        this.url = url;
+    public void setTitle(String title) {
+        this.title = title;
     }
-    public void setUrl(String ingredient) {
+    public void setUrl(String url) {
         this.url = url;
     }
     public void setImage_url(String image_url) {this.image_url = image_url;}
     public void setRecipe_id(String recipe_id) {this.recipe_id = recipe_id;}
-    public void setIngredients(ArrayList<String> ingredients) {this.ingredients = ingredients;}
+    public void setIngredients(JSONArray ingredients) {this.ingredients = ingredients;}
 
 }

@@ -57,5 +57,6 @@ public class IngredientArrayAdapter extends ArrayAdapter<Ingredient> {
     static class IngredientHolder {
         TextView ingredient;
         Button btnDelete;
+
     }
 }
