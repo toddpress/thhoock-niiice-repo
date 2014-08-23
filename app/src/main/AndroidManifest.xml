@@ -21,6 +21,8 @@
             android:name=".SearchResultsActivity"
             android:label="@string/title_activity_search_results" >
         </activity>
+
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     </application>
 
 </manifest>
