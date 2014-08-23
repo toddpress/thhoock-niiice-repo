@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ import Models.Ingredient;
 public class SearchActivity extends Activity {
 
 
-    private Button addIngredientButton;
+    private ImageButton addIngredientButton;
     private Button searchRecipesButton;
     private EditText addIngredientEditText;
     private ListView addedIngredientsList;
@@ -32,7 +33,7 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
 
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
-        addIngredientButton = (Button) findViewById(R.id.add_ingredient_button);
+        addIngredientButton = (ImageButton) findViewById(R.id.add_ingredient_button);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
         addedIngredientsList = (ListView) findViewById(R.id.ingredients_list);
 
