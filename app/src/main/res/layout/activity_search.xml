@@ -16,22 +16,30 @@
         android:layout_above="@+id/find_recipes_button"
         android:weightSum="1">
 
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/add_ingredient"
             android:layout_gravity="center_horizontal"
-            android:inputType="text"/>
+            android:layout_weight="1.00" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Ingredient"
+            android:text="+"
             android:id="@+id/add_ingredient_button"
-            android:layout_gravity="center_horizontal"
             android:longClickable="false" />
 
-        <ListView
+
+        </LinearLayout>
+
+
+            <ListView
             android:layout_width="match_parent"
             android:layout_height="131dp"
             android:id="@+id/ingredients_list"

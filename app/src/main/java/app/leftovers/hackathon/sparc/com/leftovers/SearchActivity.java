@@ -30,6 +30,7 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
         addIngredientButton = (Button) findViewById(R.id.add_ingredient_button);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
