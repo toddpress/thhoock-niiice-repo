@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import Loopj.HttpRequestClient;
 import Models.ShortRecipe;
 
+
+
 public class SearchResultsActivity extends Activity {
 
     private ListView resultsListView;
@@ -43,16 +45,34 @@ public class SearchResultsActivity extends Activity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.v("test", "test");
-                //Gson gson = new Gson();
-                // If the response is JSONObject instead of expected JSONArray
+
+                JSONArray recipes = null;
+
+
+                try {
+                  recipes = response.getJSONArray("recipes");
+                } catch (Exception E){}
+
+
+                int recipeLength = recipes.length();
+                for (int i = 0; i < recipeLength; i++) {
+
+                    JSONObject j = new JSONObject();
+
+                    try {
+                        j = recipes.getJSONObject(i);
+                        ShortRecipe recipe = new ShortRecipe();
+                        recipe.setTitle(j.getString("title"));
+                        recipe.setUrl(j.getString("source_url"));
+                        recipe.setRecipe_id(j.getString("recipe_id"));
+                        recipe.setImage_url(j.getString("image_url"));
+
+                    } catch (Exception E){}
+
+
+                }
             }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                // Pull out the first event on the public timeline
-                Log.v("test", "test");
-
-            }
         });
 
         }

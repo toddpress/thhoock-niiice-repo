@@ -18,21 +18,17 @@ public class ShortRecipe {
     public String getUrl() {
         return this.title;
     }
-
     public String getImage_url() {return this.image_url;}
-
     public String getRecipe_id() {return this.recipe_id;}
 
 
     // Setters
-    public void setTitle(String ingredient) {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setUrl(String url) {
         this.url = url;
     }
-    public void setUrl(String ingredient) {
-        this.url = url;
-    }
-
-
     public void setImage_url(String image_url) {this.image_url = image_url;}
     public void setRecipe_id(String recipe_id) {this.recipe_id = recipe_id;}
 
