@@ -1,4 +1,4 @@
-package leftovers.hackathon.sparc.com.leftovers;
+package app.leftovers.hackathon.sparc.com.leftovers;
 
 import android.app.Activity;
 import android.os.Bundle;
