@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "app.leftovers.hackathon.sparc.com.leftovers"
@@ -22,4 +22,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.loopj.android:android-async-http:1.4.5'
+    compile files('libs/android-smart-image-view-1.0.0.jar')
 }

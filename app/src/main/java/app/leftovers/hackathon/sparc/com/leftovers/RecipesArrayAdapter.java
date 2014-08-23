@@ -6,8 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.loopj.android.image.SmartImageView;
 
 import java.util.ArrayList;
 
@@ -35,13 +36,14 @@ public class RecipesArrayAdapter extends ArrayAdapter<ShortRecipe> {
             row = inflater.inflate(layoutResourceId, parent, false);
             holder = new IngredientHolder();
             holder.title = (TextView) row.findViewById(R.id.searchRecipeTitle);
-            holder.image = (ImageView) row.findViewById(R.id.remove_button);
+            holder.image = (SmartImageView) row.findViewById(R.id.searchRecipeImage);
             row.setTag(holder);
         } else {
             holder = (IngredientHolder) row.getTag();
         }
         ShortRecipe recipe = data.get(position);
         holder.title.setText(recipe.getTitle());
+        holder.image.setImageUrl(recipe.getImage_url());
 
         return row;
 
@@ -49,6 +51,6 @@ public class RecipesArrayAdapter extends ArrayAdapter<ShortRecipe> {
 
     static class IngredientHolder {
         TextView title;
-        ImageView image;
+        SmartImageView image;
     }
 }

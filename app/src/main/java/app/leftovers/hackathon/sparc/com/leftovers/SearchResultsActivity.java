@@ -26,6 +26,7 @@ public class SearchResultsActivity extends Activity {
     private ArrayList<ShortRecipe> list;
     private HttpRequestClient request;
     private String csv_list;
+    ArrayAdapter<ShortRecipe> recipesAdapter;
 
 
     @Override
@@ -37,6 +38,10 @@ public class SearchResultsActivity extends Activity {
         csv_list = bundle.getString("ingredientsString");
 
         resultsListView = (ListView) findViewById(R.id.search_results_list);
+
+        list = new ArrayList<ShortRecipe>();
+         recipesAdapter = new RecipesArrayAdapter(this, R.layout.recipes_lv_row, list);
+        resultsListView.setAdapter(recipesAdapter);
 
         String url = Constants.API_SEARCH + Constants.API_KEY + "&q=" + csv_list;
         Log.v("url", url);
@@ -66,6 +71,9 @@ public class SearchResultsActivity extends Activity {
                         recipe.setUrl(j.getString("source_url"));
                         recipe.setRecipe_id(j.getString("recipe_id"));
                         recipe.setImage_url(j.getString("image_url"));
+
+                        list.add(recipe);
+                        recipesAdapter.notifyDataSetChanged();
 
                     } catch (Exception E){}
 
