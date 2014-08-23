@@ -1,12 +1,15 @@
 package app.leftovers.hackathon.sparc.com.leftovers;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
+/**
+* Created by mikehavens on 8/23/14.
+*/
+public class ResultsActivity extends ListView {
 
-public class SearchActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,4 +36,5 @@ public class SearchActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
