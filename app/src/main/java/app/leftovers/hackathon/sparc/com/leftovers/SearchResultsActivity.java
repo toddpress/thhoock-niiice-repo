@@ -3,8 +3,10 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -27,6 +29,7 @@ public class SearchResultsActivity extends Activity {
     private HttpRequestClient request;
     private String csv_list;
     ArrayAdapter<ShortRecipe> recipesAdapter;
+    private ProgressBar progress;
 
 
     @Override
@@ -37,6 +40,7 @@ public class SearchResultsActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         csv_list = bundle.getString("ingredientsString");
 
+        progress = (ProgressBar)findViewById(R.id.SearchProgressBar);
         resultsListView = (ListView) findViewById(R.id.search_results_list);
 
         list = new ArrayList<ShortRecipe>();
@@ -45,6 +49,8 @@ public class SearchResultsActivity extends Activity {
 
         String url = Constants.API_SEARCH + Constants.API_KEY + "&q=" + csv_list;
         Log.v("url", url);
+
+        progress.setVisibility(View.VISIBLE);
 
         HttpRequestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
@@ -55,8 +61,9 @@ public class SearchResultsActivity extends Activity {
 
 
                 try {
-                  recipes = response.getJSONArray("recipes");
-                } catch (Exception E){}
+                    recipes = response.getJSONArray("recipes");
+                } catch (Exception E) {
+                }
 
 
                 int recipeLength = recipes.length();
@@ -75,10 +82,16 @@ public class SearchResultsActivity extends Activity {
                         list.add(recipe);
                         recipesAdapter.notifyDataSetChanged();
 
-                    } catch (Exception E){}
+
+
+                    } catch (Exception E) {
+                    }
+
 
 
                 }
+
+                progress.setVisibility(View.INVISIBLE);
             }
 
         });

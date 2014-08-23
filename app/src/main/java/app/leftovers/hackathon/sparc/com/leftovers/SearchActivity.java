@@ -49,13 +49,18 @@ public class SearchActivity extends Activity {
     private View.OnClickListener addIngredientsClicked = new View.OnClickListener() {
         public void onClick(View v) {
 
-            Ingredient ingredient = new Ingredient();
-            ingredient.setIngredient(addIngredientEditText.getText().toString());
 
-            list.add(ingredient);
-            ingredientsAdapter.notifyDataSetChanged();
-            addIngredientEditText.setText("");
+            String entry = addIngredientEditText.getText().toString().trim();
+
+            if (entry != null && entry.length() > 0) {
+                Ingredient ingredient = new Ingredient();
+                ingredient.setIngredient(entry);
+
+                list.add(ingredient);
+                ingredientsAdapter.notifyDataSetChanged();
+                addIngredientEditText.setText("");
             }
+        }
 
     };
 

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -28,6 +30,10 @@ public class FullRecipeActivity extends Activity {
     private Button fullButton;
     private ListView fullIngredientsListView;
     private LongRecipe fullRecipe;
+    private ArrayList<String> fullIngredientsArray = null;
+    private ArrayAdapter<String> listAdapter = null;
+
+    private ProgressBar progress;
 
     private String recipeId;
 
@@ -39,7 +45,9 @@ public class FullRecipeActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         recipeId = bundle.getString("fullRecipeId");
 
-        ArrayList<String> fullIngredients = new ArrayList<String>();
+        fullIngredientsArray = new ArrayList<String>();
+        progress = (ProgressBar)findViewById(R.id.fullProgressBar);
+
 
         fullTitle = (TextView)findViewById(R.id.fullRecipeName);
         fullImage = (SmartImageView)findViewById(R.id.fullRecipeImage);
@@ -52,6 +60,7 @@ public class FullRecipeActivity extends Activity {
         String url = Constants.API_GET + Constants.API_KEY + "&rId=" + recipeId;
         Log.v("url", url);
 
+        progress.setVisibility(View.VISIBLE);
         HttpRequestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -87,11 +96,18 @@ public class FullRecipeActivity extends Activity {
                     });
 
 
+                    for (int i = 0; i < fullRecipe.getIngredients().length(); i++) {
+                        fullIngredientsArray.add(fullRecipe.getIngredients().getString(i));
+                    }
 
 
+                    listAdapter = new ArrayAdapter<String>(FullRecipeActivity.this, android.R.layout.simple_list_item_1, fullIngredientsArray);
+                    fullIngredientsListView.setAdapter(listAdapter);
 
                 } catch (Exception E) {
                 }
+
+                progress.setVisibility(View.INVISIBLE);
             }
 
 
