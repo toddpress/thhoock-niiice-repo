@@ -75,7 +75,7 @@ public class SearchActivity extends Activity {
                         result = i.getIngredient();
                     }
                     else {
-                        result = result + ", " + i.getIngredient();
+                        result = result + "," + i.getIngredient();
                     }
                     counter ++;
                 }
