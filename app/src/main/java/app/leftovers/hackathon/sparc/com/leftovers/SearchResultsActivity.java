@@ -10,7 +10,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import Models.Ingredient;
-import Models.Recipe;
 import Models.ShortRecipe;
 import app.leftovers.hackathon.sparc.com.leftovers.R;
 
