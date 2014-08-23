@@ -67,12 +67,23 @@ public class SearchActivity extends Activity {
 
             if (list.size() > 0) {
 
-                String ingredientsString = list.toString();
-                ingredientsString = ingredientsString.substring(1, ingredientsString.length() - 1);
-                Log.v("string", ingredientsString);
+                int counter = 0 ;
+                String result = "";
+
+                for (Ingredient i : list) {
+                    if (counter == 0) {
+                        result = i.getIngredient();
+                    }
+                    else {
+                        result = result + ", " + i.getIngredient();
+                    }
+                    counter ++;
+                }
+
+                Log.v("string", result);
 
                 Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
-                intent.putExtra("ingredientsString", ingredientsString);
+                intent.putExtra("ingredientsString", result);
                 startActivity(intent);
             } else {
                 Toast.makeText(SearchActivity.this, "You haven't added any ingredients", Toast.LENGTH_SHORT).show();
