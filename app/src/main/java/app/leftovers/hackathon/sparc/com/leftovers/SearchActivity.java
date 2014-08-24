@@ -33,6 +33,7 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
 
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
+        addIngredientEditText.setHint("Enter ingredients to combine here!");
         addIngredientButton = (ImageButton) findViewById(R.id.add_ingredient_button);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
         addedIngredientsList = (ListView) findViewById(R.id.ingredients_list);
