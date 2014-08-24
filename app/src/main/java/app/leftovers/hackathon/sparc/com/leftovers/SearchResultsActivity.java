@@ -3,10 +3,12 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -92,16 +94,21 @@ public class SearchResultsActivity extends Activity {
                 }
 
                 progress.setVisibility(View.INVISIBLE);
+
+                if (list.size() < 1) {
+                    Toast toast = Toast.makeText(SearchResultsActivity.this, "No Results found", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                }
             }
 
         });
 
+
+
+
         }
 
-
-
-
-        // add ingredients adapter
 
 
 }
