@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/add_ingredient"
             android:layout_gravity="center_horizontal"
+            android:inputType="text"
             android:layout_weight="1.00" />
 
         <ImageButton
