@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:scrollbars="none" >
+    android:scrollbars="none"
+    android:background="#FAF0D2">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -51,7 +52,9 @@
         android:layout_height="wrap_content"
         android:text="Go to Recipe!"
         android:id="@+id/fullRecipeButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#437356"
+        android:textColor="#FAF0D2"/>
 
 </LinearLayout>
 
