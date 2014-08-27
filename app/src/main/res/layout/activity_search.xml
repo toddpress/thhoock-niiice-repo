@@ -1,89 +1,88 @@
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="0dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context=".SearchActivity"
-        android:background="@color/black_rock"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/find_recipes_button"
-        android:weightSum="1">
-
-        <app.leftovers.hackathon.sparc.com.leftovers.CustomTextView
-            xmlns:custom="http://schemas.android.com/apk/res/app.leftovers.hackathon.sparc.com.leftovers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:text="Foodini"
-            android:textColor="@color/aqua"
-            android:textSize="90sp"
-            custom:fontAssetName="Elephont-Light.otf" />
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="14sp"
-            android:paddingLeft="4dp"
-            android:textColor="@color/pokey"
-            android:layout_gravity="left"
-            android:text="@string/tagline" />
-
-        <View android:layout_height="2dp" android:layout_width="fill_parent"
-            android:background="@color/gun_powder"></View>
-
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:paddingTop="15dp">
-
-            <EditText
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:textCursorDrawable="@drawable/cursor_color"
-                android:textColor="@color/beige"
-                android:textColorHint="@color/gun_powder"
-                android:textSize="28sp"
-                android:hint=" Whatcha Got?"
-                android:paddingLeft="5dp"
-                android:id="@+id/add_ingredient"
-                android:layout_gravity="center"
-                android:inputType="text"
-                android:layout_weight="1.00" />
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/plus"
-                android:id="@+id/add_ingredient_button"
-                android:longClickable="false" />
-
-
-        </LinearLayout>
-
-            <ListView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:id="@+id/ingredients_list"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-                android:stackFromBottom="false" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/search_btn_text"
-            android:id="@+id/find_recipes_button"
-            android:textSize="22sp"
-            android:layout_gravity="center"
-            android:background="@drawable/ghost_btn"
-            android:textColor="@color/pokey"
-            />
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".SearchActivity"
+    android:background="@color/black_rock"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true"
+    android:layout_above="@+id/find_recipes_button"
+    android:weightSum="1">
+    
+    <app.leftovers.hackathon.sparc.com.leftovers.CustomTextView
+    xmlns:custom="http://schemas.android.com/apk/res/app.leftovers.hackathon.sparc.com.leftovers"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|bottom"
+    android:text="Foodini"
+    android:textColor="@color/aqua"
+    android:textSize="90sp"
+    custom:fontAssetName="Elephont-Light.otf" />
+    <TextView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textSize="14sp"
+    android:paddingLeft="2dp"
+    android:textColor="@color/pokey"
+    android:layout_gravity="left"
+    android:text="@string/tagline" />
+    
+    <View android:layout_height="1dip" android:layout_width="match_parent"
+        android:background="@color/gun_powder"></View>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:paddingTop="15dp">
+        
+        <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textColor="@color/beige"
+        android:textColorHint="@color/gun_powder"
+        android:textSize="28sp"
+        android:hint=" Whatcha Got?"
+        android:paddingLeft="5dp"
+        android:id="@+id/add_ingredient"
+        android:layout_gravity="center"
+        android:inputType="text"
+        android:layout_weight="1.00"
+        android:capitalize="sentences" />
+        
+        <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/plus"
+        android:id="@+id/add_ingredient_button"
+        android:longClickable="false" />
+        
     </LinearLayout>
+    
+    <ListView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:id="@+id/ingredients_list"
+    android:layout_gravity="center_horizontal"
+    android:layout_weight="1"
+    android:stackFromBottom="false" />
+    
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/search_btn_text"
+    android:id="@+id/find_recipes_button"
+    android:textSize="22sp"
+    android:layout_gravity="center"
+    android:background="@drawable/ghost_btn"
+    android:textColor="@color/pokey"
+    />
+</LinearLayout>
