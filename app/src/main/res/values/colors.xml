@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_rock">#2E313D</color>
+    <color name="gun_powder">#434859</color>
+    <color name="pokey">#F0563D</color>
+    <color name="flamingo">#ffd2543b</color>
+    <color name="beige">#b1f2f4c4</color>
+    <color name="slime">#B7C11E</color>
+    <color name="aqua">#23A38F</color>
+    <color name="light_sea_green">#9d29bfa8</color>
+</resources>

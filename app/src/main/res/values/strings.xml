@@ -5,4 +5,7 @@
     <string name="title_activity_search_results">Foodini</string>
     <string name="title_activity_full_recipe">Foodini</string>
 
+    <!--search activity-->
+    <string name="tagline">Turn miscellany into amazing.</string>
+    <string name="search_btn_text">Find Recipes</string>
 </resources>
