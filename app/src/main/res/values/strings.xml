@@ -6,6 +6,7 @@
     <string name="title_activity_full_recipe">Foodini</string>
 
     <!--search activity-->
-    <string name="tagline">Turn miscellany into amazing.</string>
+    <string name="tagline">Add Ingredients below and tap "Find Recipes."</string>
     <string name="search_btn_text">Find Recipes</string>
+    <string name="remove_ingredient">click to remove an ingredient</string>
 </resources>

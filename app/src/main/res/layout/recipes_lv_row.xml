@@ -8,19 +8,20 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FAF0D2"
+        android:background="@color/gun_powder"
         android:layout_margin="7dp">
 
     <com.loopj.android.image.SmartImageView
         android:layout_width="match_parent"
         android:layout_margin="7dp"
-        android:layout_height="300dp"
+        android:layout_height="168dp"
         android:id="@+id/searchRecipeImage"
         android:scaleType="centerCrop" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/light_slate_gray"
         android:layout_margin="7dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/searchRecipeTitle"
@@ -30,7 +31,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical|center_horizontal"
-        android:textSize="14dp" />
+        android:textSize="20sp" />
 
     </LinearLayout>
 
