@@ -2,15 +2,19 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.test.ActivityUnitTestCase;
+import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,6 +26,8 @@ import Models.Ingredient;
 
 public class SearchActivity extends Activity {
     private final String TAG = "SearchActivity";
+    private FrameLayout mainLayout;
+    private FrameLayout helpLayout;
     private ImageButton addIngredientButton;
     private ImageButton clearIngredientsButton;
     private ImageButton getInfoButton;
@@ -35,27 +41,22 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        helpLayout = (FrameLayout)findViewById(R.id.help_layout_root);
+        mainLayout = (FrameLayout)findViewById(R.id.search_layout_main);
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
         addIngredientButton = (ImageButton) findViewById(R.id.add_ingredient_button);
         clearIngredientsButton = (ImageButton) findViewById(R.id.clear_ingredients);
         getInfoButton = (ImageButton) findViewById(R.id.get_info);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
         addedIngredientsList = (ListView) findViewById(R.id.ingredients_list);
-        addIngredientEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(!b){
-                    hideKeys(view);
-                }
-
-            }
-        });
         //on click listeners
         addIngredientButton.setOnClickListener(addIngredientsClicked);
         searchRecipesButton.setOnClickListener(searchClicked);
         list = new ArrayList<Ingredient>();
         ingredientsAdapter = new IngredientArrayAdapter(this, R.layout.ingredient_lv_row, list);
         addedIngredientsList.setAdapter(ingredientsAdapter);
+
+        clearIngredientsButton.setEnabled(false);
     }
 
 
@@ -121,12 +122,15 @@ public class SearchActivity extends Activity {
     }
 
     public void getInfoClicked(View view) {
-        Log.v(TAG, "info!");
+        if (helpLayout == null){
+            View help = getLayoutInflater().inflate(R.layout.help_layout, mainLayout, false);
+            mainLayout.addView(help);
+        }
     }
-
-    public void hideKeys(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    public void closeHelpClicked (View view) {
+        View layout = findViewById(R.id.help_layout_root);
+        ViewGroup parent = (ViewGroup) layout.getParent();
+        parent.removeView(layout);
     }
 }
 

@@ -7,6 +7,7 @@
 
     <!--search activity-->
     <string name="tagline">Add Ingredients below and tap "Find Recipes."</string>
+    <string name="search_input_text">&#8201;Whatcha Got?</string>
     <string name="search_btn_text">Find Recipes</string>
     <string name="remove_ingredient">click to remove an ingredient</string>
 </resources>

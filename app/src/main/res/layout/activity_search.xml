@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity"
+    android:id="@+id/search_layout_main"
     android:background="@color/black_rock">
     <ImageView
         android:layout_width="match_parent"
@@ -76,23 +77,25 @@
                 android:textColor="@color/teddy"
                 android:textColorHint="@color/teddy"
                 android:textSize="24sp"
-                android:hint=" Whatcha Got?"
+                android:hint="@string/search_input_text"
                 android:paddingLeft="10dp"
                 android:id="@+id/add_ingredient"
                 android:inputType="text"
-                android:layout_weight="1.0" />
+                android:layout_weight="1.0"
+                android:layout_gravity="center" />
 
             <ImageButton
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:id="@+id/add_ingredient_button"
                 android:longClickable="false"
-                android:background="@drawable/plus" />
+                android:background="@drawable/plus"/>
         </LinearLayout>
 
         <View android:layout_height="2dp" android:layout_width="wrap_content"
-        android:background="@color/gun_powder"
-        android:layout_marginRight="50dp"/>
+        android:background="@color/teddy"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"/>
         <ListView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -100,7 +103,8 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:id="@+id/ingredients_list"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:divider="@null">
         </ListView>
         <Button
             android:layout_width="match_parent"

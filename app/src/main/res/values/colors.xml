@@ -18,8 +18,10 @@
 
     <color name="deep_blue">#032843</color>
 
+    <color name="transparent_black">#BF000000</color>
     <color name="valencia">#D95655</color>
     <color name="texas">#DDF185</color>
+    <color name="light_gray">#E6E6E6</color>
     <color name="windsor">#ff4e3ea3</color>
     <color name="mint_tulip">#C2E8E3</color>
 
