@@ -2,15 +2,15 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.test.ActivityUnitTestCase;
-import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,16 +37,22 @@ public class SearchActivity extends Activity {
     private ArrayList<Ingredient> list;
     ArrayAdapter<Ingredient> ingredientsAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        SpannableString s = new SpannableString("Foodini");
+        s.setSpan(new TypefaceSpan(this, "Elephont-Light.otf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        setTitle(s);
+
         helpLayout = (FrameLayout)findViewById(R.id.help_layout_root);
         mainLayout = (FrameLayout)findViewById(R.id.search_layout_main);
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
         addIngredientButton = (ImageButton) findViewById(R.id.add_ingredient_button);
-        clearIngredientsButton = (ImageButton) findViewById(R.id.clear_ingredients);
-        getInfoButton = (ImageButton) findViewById(R.id.get_info);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
         addedIngredientsList = (ListView) findViewById(R.id.ingredients_list);
         //on click listeners
@@ -56,7 +62,7 @@ public class SearchActivity extends Activity {
         ingredientsAdapter = new IngredientArrayAdapter(this, R.layout.ingredient_lv_row, list);
         addedIngredientsList.setAdapter(ingredientsAdapter);
 
-        clearIngredientsButton.setEnabled(false);
+
     }
 
 
@@ -73,7 +79,6 @@ public class SearchActivity extends Activity {
                 list.add(ingredient);
                 ingredientsAdapter.notifyDataSetChanged();
                 addIngredientEditText.setText("");
-                clearIngredientsButton.setEnabled(true);
             }
         }
 
@@ -111,26 +116,47 @@ public class SearchActivity extends Activity {
         }
     };
 
-    public void clearIngredientsClicked(View view) {
-        if (list.size() > 0) {
-            list.removeAll(list);
-            ingredientsAdapter.notifyDataSetChanged();
-            clearIngredientsButton.setEnabled(false);
-        } else {
-            Toast.makeText(SearchActivity.this, "You haven't added any ingredients", Toast.LENGTH_SHORT).show();
-        }
-    }
 
-    public void getInfoClicked(View view) {
-        if (helpLayout == null){
-            View help = getLayoutInflater().inflate(R.layout.help_layout, mainLayout, false);
-            mainLayout.addView(help);
-        }
-    }
+
     public void closeHelpClicked (View view) {
         View layout = findViewById(R.id.help_layout_root);
         ViewGroup parent = (ViewGroup) layout.getParent();
         parent.removeView(layout);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.search_action_clear:
+
+                if (list.size() > 0) {
+                    list.removeAll(list);
+                    ingredientsAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(SearchActivity.this, "You haven't added any ingredients", Toast.LENGTH_SHORT).show();
+                }
+
+                return true;
+            case R.id.search_action_about:
+
+                if (helpLayout == null){
+                    View help = getLayoutInflater().inflate(R.layout.help_layout, mainLayout, false);
+                    mainLayout.addView(help);
+                }
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
 
