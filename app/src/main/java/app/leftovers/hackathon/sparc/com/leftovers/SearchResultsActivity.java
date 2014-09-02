@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,9 +24,9 @@ import Models.ShortRecipe;
 
 
 public class SearchResultsActivity extends Activity {
+    private GridView resultsGridView;
 
-    private ListView resultsListView;
-    ArrayAdapter<String> resultsAdapter;
+    ArrayAdapter<String> resultsAdapter; // in use?
     private ArrayList<ShortRecipe> list;
     private HttpRequestClient request;
     private String csv_list;
@@ -43,12 +43,11 @@ public class SearchResultsActivity extends Activity {
         csv_list = bundle.getString("ingredientsString");
 
         progress = (ProgressBar)findViewById(R.id.SearchProgressBar);
-        resultsListView = (ListView) findViewById(R.id.search_results_list);
+        resultsGridView  = (GridView) findViewById(R.id.search_results_grid);
 
         list = new ArrayList<ShortRecipe>();
-         recipesAdapter = new RecipesArrayAdapter(this, R.layout.recipes_lv_row, list);
-        resultsListView.setAdapter(recipesAdapter);
-
+        recipesAdapter = new RecipesArrayAdapter(this, R.layout.recipes_lv_row, list);
+        resultsGridView.setAdapter(recipesAdapter);
         String url = Constants.API_SEARCH + Constants.API_KEY + "&q=" + csv_list;
         Log.v("url", url);
 

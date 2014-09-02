@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black_rock">#2E313D</color>
-    <color name="gun_powder">#ff3d4357</color>
+
     <color name="light_slate_gray">#818797</color>
-    <color name="pokey">#F0563D</color>
-    <color name="teddy">#D9C7B2</color>
     <color name="slime">#B7C11E</color>
+
 
     <color name="desert">#A8643C</color>
     <color name="verdun_green">#3E5D11</color>
@@ -15,16 +13,19 @@
     <color name="chardonnay">#ffffdea6</color>
     <color name="twilight_blue">#F5F5F0</color>
     <color name="blue_zodiac">#3E4657</color>
-
     <color name="deep_blue">#032843</color>
+    <color name="beaver">#8C715C</color>
 
+    <color name="teddy">#D9C7B2</color>
+    <color name="black_rock">#2E313D</color>
+    <color name="gun_powder">#ff3d4357</color>
+    <color name="pokey">#F0563D</color>
     <color name="transparent_black">#BF000000</color>
     <color name="valencia">#D95655</color>
     <color name="texas">#DDF185</color>
     <color name="light_gray">#E6E6E6</color>
+    <color name="lighter_gray">#fff2f2f2</color>
     <color name="windsor">#ff4e3ea3</color>
     <color name="mint_tulip">#C2E8E3</color>
-
-    <color name="beaver">#8C715C</color>
 
 </resources>
