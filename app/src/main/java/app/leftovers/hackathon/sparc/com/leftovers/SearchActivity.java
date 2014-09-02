@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,8 +51,8 @@ public class SearchActivity extends Activity {
 
         setTitle(s);
 
-        helpLayout = (FrameLayout)findViewById(R.id.help_layout_root);
-        mainLayout = (FrameLayout)findViewById(R.id.search_layout_main);
+        helpLayout = (FrameLayout) findViewById(R.id.help_layout_root);
+        mainLayout = (FrameLayout) findViewById(R.id.search_layout_main);
         addIngredientEditText = (EditText) findViewById(R.id.add_ingredient);
         addIngredientButton = (ImageButton) findViewById(R.id.add_ingredient_button);
         searchRecipesButton = (Button) findViewById(R.id.find_recipes_button);
@@ -62,12 +64,14 @@ public class SearchActivity extends Activity {
         ingredientsAdapter = new IngredientArrayAdapter(this, R.layout.ingredient_lv_row, list);
         addedIngredientsList.setAdapter(ingredientsAdapter);
 
+        setupUI(findViewById(R.id.search_layout_main));
 
     }
 
 
     private View.OnClickListener addIngredientsClicked = new View.OnClickListener() {
         public void onClick(View v) {
+
 
 
             String entry = addIngredientEditText.getText().toString().trim();
@@ -138,6 +142,7 @@ public class SearchActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.search_action_clear:
 
+                hideSoftKeyboard(this);
                 if (list.size() > 0) {
                     list.removeAll(list);
                     ingredientsAdapter.notifyDataSetChanged();
@@ -148,6 +153,7 @@ public class SearchActivity extends Activity {
                 return true;
             case R.id.search_action_about:
 
+                hideSoftKeyboard(this);
                 if (helpLayout == null){
                     View help = getLayoutInflater().inflate(R.layout.help_layout, mainLayout, false);
                     mainLayout.addView(help);
@@ -157,6 +163,38 @@ public class SearchActivity extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setupUI(View view) {
+
+        //Set up touch listener for non-text box views to hide keyboard.
+        if((!(view instanceof EditText)) && view != findViewById(R.id.add_ingredient_button) ) {
+
+            view.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(SearchActivity.this);
+                    return false;
+                }
+
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView);
+            }
+        }
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
 
