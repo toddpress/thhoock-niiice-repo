@@ -39,6 +39,8 @@ public class SearchResultsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
+        setTitle("Recipes");
+
         Bundle bundle = getIntent().getExtras();
         csv_list = bundle.getString("ingredientsString");
 
