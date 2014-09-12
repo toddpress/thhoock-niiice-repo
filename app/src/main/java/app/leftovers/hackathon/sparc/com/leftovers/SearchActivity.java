@@ -76,7 +76,7 @@ public class SearchActivity extends Activity {
 
             String entry = addIngredientEditText.getText().toString().trim();
 
-            if (entry != null && entry.length() > 0) {
+            if (entry.length() > 0) {
                 Ingredient ingredient = new Ingredient();
                 ingredient.setIngredient(entry);
 

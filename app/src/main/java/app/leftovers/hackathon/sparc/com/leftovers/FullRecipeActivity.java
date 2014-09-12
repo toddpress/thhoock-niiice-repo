@@ -2,9 +2,11 @@ package app.leftovers.hackathon.sparc.com.leftovers;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -100,8 +102,17 @@ public class FullRecipeActivity extends Activity {
                         fullIngredientsArray.add(fullRecipe.getIngredients().getString(i));
                     }
 
-
-                    listAdapter = new ArrayAdapter<String>(FullRecipeActivity.this, android.R.layout.simple_list_item_1, fullIngredientsArray);
+                    listAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                            android.R.layout.simple_list_item_1, fullIngredientsArray) {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view = super.getView(position, convertView, parent);
+                            TextView text = (TextView) view.findViewById(android.R.id.text1);
+                            text.setTextColor(getResources().getColor(R.color.light_gray));
+                            return view;
+                        }
+                    };
+//                    listAdapter = new ArrayAdapter<String>(FullRecipeActivity.this, android.R.layout.simple_list_item_1, fullIngredientsArray);
                     fullIngredientsListView.setAdapter(listAdapter);
 
                 } catch (Exception E) {
